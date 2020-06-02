@@ -534,8 +534,7 @@ const config = {
 setLogLevel(config.logLevel);
 setConfig(config);
 
-function parse(text) {
-  const graphType = utils.detectType(text);
+function getParser(graphType) {
   let parser;
 
   logger.debug('Type ' + graphType);
@@ -601,6 +600,12 @@ function parse(text) {
     throw error;
   };
 
+  return parser;
+}
+
+function parse(text) {
+  const graphType = utils.detectType(text);
+  const parser = getParser(graphType);
   parser.parse(text);
 }
 
@@ -932,7 +937,8 @@ const mermaidAPI = {
   render,
   parse,
   initialize,
-  getConfig
+  getConfig,
+  getParser
 };
 
 export default mermaidAPI;
