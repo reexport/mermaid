@@ -96,6 +96,10 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "yarn-upgrade-all": {
     "ignore": [
       "babel-core"
